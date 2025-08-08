@@ -16,7 +16,7 @@ timezone: Asia/Shanghai
 
 title: DoHoKun # 站点主标题
 
-tagline: A text-focused Jekyll theme # 将显示为副标题
+tagline: Hajimi Nameiluduo # 将显示为副标题
 
 description: >- # 用于 SEO 元信息和 Atom feed
   A minimal, responsive and feature-rich Jekyll theme for technical writing.
