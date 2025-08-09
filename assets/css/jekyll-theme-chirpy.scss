@@ -139,3 +139,12 @@ html.topbar-solid #topbar-wrapper {
     transform: none;
   }
 }
+
+/* TOC sticky and layout polish (post pages) */
+@media (min-width: 1200px) {
+  #toc-wrapper {
+    top: 96px; /* stick under topbar */
+    max-height: calc(100vh - 140px);
+    overflow: auto;
+  }
+}
