@@ -154,18 +154,18 @@ body {
   }
 }
 
-/* Topbar: transparent -> solid on scroll */
+/* Topbar: always frosted with subtle bottom border */
 #topbar-wrapper {
-  background: transparent;
-  transition: background-color 0.25s ease, box-shadow 0.25s ease;
-}
-html.topbar-solid #topbar-wrapper {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
   backdrop-filter: saturate(180%) blur(12px);
-  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
-[data-mode='dark'] html.topbar-solid #topbar-wrapper {
-  background: rgba(16, 16, 20, 0.7);
+[data-mode='dark'] #topbar-wrapper {
+  background: rgba(16, 18, 22, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Reveal on scroll */
