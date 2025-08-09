@@ -85,6 +85,44 @@ body {
   background: #0f172a;
 }
 
+/* Code header & clipboard */
+.code-header {
+  margin-left: 0.75rem;
+  margin-right: 0.25rem;
+}
+.code-header span::after {
+  /* label text */
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.code-header button {
+  /* clipboard */
+  border-radius: 10px;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    color 0.2s ease;
+}
+.code-header button:not([timeout]):hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+[data-mode='dark'] .code-header button:not([timeout]):hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Code block scrollbar */
+.highlight::-webkit-scrollbar {
+  height: 10px;
+}
+.highlight::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 8px;
+}
+[data-mode='dark'] .highlight::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+}
+.highlight::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 /* Table tweaks */
 .post-content table {
   border-radius: 8px;
