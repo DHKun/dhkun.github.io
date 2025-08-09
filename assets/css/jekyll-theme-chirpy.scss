@@ -121,3 +121,21 @@ html.topbar-solid #topbar-wrapper {
 [data-mode='dark'] html.topbar-solid #topbar-wrapper {
   background: rgba(16, 16, 20, 0.7);
 }
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.reveal-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-in {
+    opacity: 1;
+    transform: none;
+  }
+}
