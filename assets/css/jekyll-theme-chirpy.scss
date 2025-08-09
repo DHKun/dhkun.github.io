@@ -272,3 +272,19 @@ html.topbar-solid #topbar-wrapper {
   border-color: rgba(255, 255, 255, 0.18);
   background: #1b2333;
 }
+
+/* Reading progress bar */
+#read-progress {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 3px;
+  width: 0;
+  z-index: 9999;
+  background: linear-gradient(90deg, #06c, #3aa0ff);
+  transition: width 0.12s ease-out, opacity 0.2s ease;
+  opacity: 0; /* hidden until scroll into article */
+}
+[data-mode='dark'] #read-progress {
+  background: linear-gradient(90deg, #7aa2f7, #9ab8ff);
+}
