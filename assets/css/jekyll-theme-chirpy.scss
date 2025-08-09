@@ -288,3 +288,63 @@ html.topbar-solid #topbar-wrapper {
 [data-mode='dark'] #read-progress {
   background: linear-gradient(90deg, #7aa2f7, #9ab8ff);
 }
+
+/* Admonitions (Note/Tip/Info/Warning/Danger) */
+.post-content .admonition {
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  border: 1px solid transparent;
+}
+.post-content .admonition-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+.post-content .admonition-title i {
+  opacity: 0.9;
+}
+
+.post-content .admonition.note {
+  background: rgba(0, 102, 204, 0.06);
+  border-color: rgba(0, 102, 204, 0.18);
+}
+.post-content .admonition.tip {
+  background: rgba(11, 155, 37, 0.08);
+  border-color: rgba(11, 155, 37, 0.22);
+}
+.post-content .admonition.info {
+  background: rgba(0, 128, 255, 0.08);
+  border-color: rgba(0, 128, 255, 0.22);
+}
+.post-content .admonition.warning {
+  background: rgba(255, 171, 0, 0.1);
+  border-color: rgba(255, 171, 0, 0.28);
+}
+.post-content .admonition.danger {
+  background: rgba(229, 57, 53, 0.1);
+  border-color: rgba(229, 57, 53, 0.28);
+}
+
+[data-mode='dark'] .post-content .admonition.note {
+  background: rgba(10, 60, 120, 0.25);
+  border-color: rgba(10, 60, 120, 0.5);
+}
+[data-mode='dark'] .post-content .admonition.tip {
+  background: rgba(20, 110, 35, 0.28);
+  border-color: rgba(20, 110, 35, 0.5);
+}
+[data-mode='dark'] .post-content .admonition.info {
+  background: rgba(30, 90, 160, 0.35);
+  border-color: rgba(30, 90, 160, 0.55);
+}
+[data-mode='dark'] .post-content .admonition.warning {
+  background: rgba(140, 100, 10, 0.35);
+  border-color: rgba(140, 100, 10, 0.6);
+}
+[data-mode='dark'] .post-content .admonition.danger {
+  background: rgba(140, 30, 35, 0.38);
+  border-color: rgba(140, 30, 35, 0.65);
+}
