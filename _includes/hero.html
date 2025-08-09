@@ -1,0 +1,12 @@
+<section id="hero" class="hero">
+  <div class="hero-inner">
+    <h1 class="hero-title">{{ site.title }}</h1>
+    {% if site.tagline %}
+      <p class="hero-subtitle">{{ site.tagline }}</p>
+    {% endif %}
+    <div class="hero-cta">
+      <a class="btn btn-primary btn-lg" href="{{ '/about/' | relative_url }}">关于我</a>
+      <a class="btn btn-outline-primary btn-lg ms-2" href="{{ '/archives/' | relative_url }}">所有文章</a>
+    </div>
+  </div>
+</section>
