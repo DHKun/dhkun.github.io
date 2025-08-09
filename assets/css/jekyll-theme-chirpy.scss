@@ -21,12 +21,14 @@
   /* collapsed by default */
   #sidebar {
     width: var(--sb-collapsed-width);
-    transition: width 0.25s ease;
+    transition: width 0.28s cubic-bezier(0.22, 0.61, 0.36, 1);
   }
 
-  /* expand on hover */
-  #sidebar:hover {
+  /* expand on hover or focus-within (keyboard) */
+  #sidebar:hover,
+  #sidebar:focus-within {
     width: var(--sb-expanded-width);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
   }
 
   @media (min-width: 1650px) {
@@ -38,15 +40,41 @@
   /* shift main content accordingly */
   #main-wrapper {
     margin-left: var(--sb-collapsed-width);
-    transition: margin-left 0.25s ease;
+    transition: margin-left 0.28s cubic-bezier(0.22, 0.61, 0.36, 1) 0.03s;
   }
 
-  #sidebar:hover ~ #main-wrapper {
+  #sidebar:hover ~ #main-wrapper,
+  #sidebar:focus-within ~ #main-wrapper {
     margin-left: var(--sb-expanded-width);
   }
 
   @media (min-width: 1650px) {
-    #sidebar:hover ~ #main-wrapper {
+    #sidebar:hover ~ #main-wrapper,
+    #sidebar:focus-within ~ #main-wrapper {
+      margin-left: var(--sb-expanded-width-xxxl);
+    }
+  }
+
+  /* Pinned (use existing attribute the theme toggles via the topbar trigger) */
+  html[sidebar-display] #sidebar,
+  body[sidebar-display] #sidebar {
+    width: var(--sb-expanded-width);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+  }
+
+  html[sidebar-display] #main-wrapper,
+  body[sidebar-display] #main-wrapper {
+    margin-left: var(--sb-expanded-width);
+  }
+
+  @media (min-width: 1650px) {
+    html[sidebar-display] #sidebar,
+    body[sidebar-display] #sidebar {
+      width: var(--sb-expanded-width-xxxl);
+    }
+
+    html[sidebar-display] #main-wrapper,
+    body[sidebar-display] #main-wrapper {
       margin-left: var(--sb-expanded-width-xxxl);
     }
   }
@@ -78,5 +106,29 @@
   #sidebar:not(:hover) .sidebar-bottom {
     padding-left: 0.75rem;
     padding-right: 0.5rem;
+    display: grid;
+    place-items: center;
+    row-gap: 0.5rem;
+  }
+
+  /* When pinned, always show full texts and paddings */
+  html[sidebar-display] #sidebar .site-title,
+  html[sidebar-display] #sidebar .site-subtitle,
+  html[sidebar-display] #sidebar nav .nav-link span,
+  body[sidebar-display] #sidebar .site-title,
+  body[sidebar-display] #sidebar .site-subtitle,
+  body[sidebar-display] #sidebar nav .nav-link span {
+    display: inline;
+  }
+
+  html[sidebar-display] #sidebar nav .nav-link i,
+  body[sidebar-display] #sidebar nav .nav-link i {
+    margin-right: 1.5rem;
+  }
+
+  html[sidebar-display] #sidebar .profile-wrapper,
+  body[sidebar-display] #sidebar .profile-wrapper {
+    padding-left: 2.5rem;
+    padding-right: 1.25rem;
   }
 }
