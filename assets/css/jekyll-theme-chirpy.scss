@@ -148,3 +148,81 @@ html.topbar-solid #topbar-wrapper {
     overflow: auto;
   }
 }
+
+/* ==========================
+   Post typography refinements
+   ========================== */
+
+/* Lists */
+.post-content ul,
+.post-content ol {
+  margin: 0.6rem 0 1rem 1.25rem;
+}
+.post-content li {
+  margin: 0.3rem 0;
+}
+.post-content li > ul,
+.post-content li > ol {
+  margin-top: 0.3rem;
+  margin-bottom: 0.4rem;
+}
+
+/* Task list */
+.post-content input[type='checkbox'] {
+  accent-color: var(--accent);
+  transform: translateY(1px);
+}
+
+/* Horizontal rule */
+.post-content hr {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 0, 0, 0.12),
+    transparent
+  );
+}
+[data-mode='dark'] .post-content hr {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+}
+
+/* Images */
+.post-content img {
+  border-radius: 10px;
+}
+
+/* Footnotes */
+.post-content .footnotes {
+  font-size: 90%;
+}
+.post-content .footnotes hr {
+  display: none;
+}
+.post-content .footnotes ol {
+  padding-left: 1rem;
+}
+.post-content .footnotes li {
+  margin: 0.35rem 0;
+}
+
+/* Keyboard key */
+.post-content kbd {
+  display: inline-block;
+  padding: 0.15rem 0.35rem;
+  font-size: 85%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  background: #f6f8fa;
+}
+[data-mode='dark'] .post-content kbd {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: #1b2333;
+}
