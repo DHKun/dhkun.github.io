@@ -273,21 +273,51 @@ html.topbar-solid #topbar-wrapper {
   background: #1b2333;
 }
 
-/* Reading progress bar */
-#read-progress {
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 3px;
-  width: 0;
-  z-index: 9999;
-  background: linear-gradient(90deg, #06c, #3aa0ff);
-  transition: width 0.12s ease-out, opacity 0.2s ease;
-  opacity: 0; /* hidden until scroll into article */
+/* Home cards: radius / shadow / hover lift */
+.card {
+  border-radius: 14px;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.04);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
-[data-mode='dark'] #read-progress {
-  background: linear-gradient(90deg, #7aa2f7, #9ab8ff);
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
 }
+.card-title {
+  font-size: clamp(1.1rem, 1.2rem + 0.2vw, 1.4rem);
+  letter-spacing: 0.2px;
+}
+.card-wrapper {
+  margin-bottom: 1rem;
+}
+.card .card-body {
+  padding: 1.1rem 1.1rem;
+}
+
+/* ==========================
+   Home cards: radius, shadow, hover, title spacing
+   ========================== */
+#post-list .card {
+  border-radius: 14px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+#post-list .card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+}
+#post-list .card-title {
+  font-size: clamp(20px, 2.2vw, 26px);
+  letter-spacing: 0.2px;
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.35rem !important;
+}
+#post-list .card-text {
+  color: inherit;
+  opacity: 0.9;
+}
+
+/* Reading progress bar removed */
 
 /* Admonitions (Note/Tip/Info/Warning/Danger) */
 .post-content .admonition {
