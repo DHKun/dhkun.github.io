@@ -107,3 +107,17 @@ body {
     animation: none !important;
   }
 }
+
+/* Topbar: transparent -> solid on scroll */
+#topbar-wrapper {
+  background: transparent;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+html.topbar-solid #topbar-wrapper {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: saturate(180%) blur(12px);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.06);
+}
+[data-mode='dark'] html.topbar-solid #topbar-wrapper {
+  background: rgba(16, 16, 20, 0.7);
+}
