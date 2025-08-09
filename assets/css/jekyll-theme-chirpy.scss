@@ -1,0 +1,113 @@
+---
+---
+
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+/* ==========================
+   Apple-like base tuning
+   (safe overrides only)
+   ========================== */
+
+/* Accent & typography */
+:root {
+  --accent: #06c;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto,
+    'Noto Sans SC', Arial, sans-serif;
+}
+
+/* Reading width (desktop) */
+@media (min-width: 1200px) {
+  #main-wrapper > .container {
+    max-width: 1100px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Body text & headings rhythm */
+.post-content {
+  font-size: 16.5px;
+  line-height: 1.78;
+  letter-spacing: 0.2px;
+}
+
+.post-content p {
+  margin: 0.95rem 0;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3 {
+  margin: 2.2rem 0 0.9rem;
+  letter-spacing: 0.3px;
+  scroll-margin-top: 96px; /* avoid topbar overlap when anchored */
+}
+
+/* Links */
+.post-content a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.post-content a:hover {
+  opacity: 0.9;
+}
+
+/* Blockquote */
+.post-content blockquote {
+  border-left: 3px solid var(--accent);
+  background: rgba(0, 102, 204, 0.06);
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+}
+
+/* Inline code */
+.post-content code {
+  background: rgba(27, 31, 35, 0.06);
+  border-radius: 6px;
+  padding: 0.12em 0.42em;
+}
+
+/* Code blocks */
+.highlight {
+  border-radius: 12px;
+  overflow: auto;
+}
+.highlight pre {
+  padding: 1rem 1.25rem;
+}
+[data-mode='light'] .highlight {
+  background: #f6f8fa;
+}
+[data-mode='dark'] .highlight {
+  background: #0f172a;
+}
+
+/* Table tweaks */
+.post-content table {
+  border-radius: 8px;
+  overflow: hidden;
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.post-content table th,
+.post-content table td {
+  padding: 0.6rem 0.75rem;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
