@@ -87,7 +87,7 @@ body {
 
 /* Reduce gap between line numbers and code */
 .highlight table td:first-child {
-  margin-right: 0.25rem; /* default 0.75rem in theme */
+  margin-right: 0rem; /* default 0.75rem in theme */
 }
 .highlight table td:last-child {
   padding-right: 1.25rem !important; /* was 2rem; keep inner padding compact */
