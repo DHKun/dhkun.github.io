@@ -30,14 +30,19 @@ tags: [AI, 自动化]
 
 ## 1. 新项目初始化（Vite + React + TS）
 - 创建：
+
 ```powershell
 npx --yes create-vite@latest zen-tasks -- --template react-ts
 ```
-- 安装依赖（PowerShell 不用 `&&`）：
+
+- 安装依赖：
+
 ```powershell
 npm --prefix .\zen-tasks install
 ```
+
 - 初始化 Git：
+
 ```powershell
 cd .\zen-tasks
 git init
@@ -47,11 +52,14 @@ git init
 
 ## 2. 测试体系（Vitest + Testing Library）
 - 安装：
+
 ```powershell
 npm install -D vitest @types/node jsdom @vitest/coverage-v8
 npm install -D @testing-library/react @testing-library/user-event @testing-library/jest-dom
 ```
+
 - `vite.config.ts`（使用 vitest/config，开启测试与覆盖率门禁）示例：
+
 ```ts
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
@@ -73,7 +81,9 @@ export default defineConfig({
   },
 });
 ```
+
 - `src/test/setup.ts`（清理与断言扩展）：
+
 ```ts
 import '@testing-library/jest-dom/vitest';
 import { afterEach } from 'vitest';
@@ -81,7 +91,9 @@ import { cleanup } from '@testing-library/react';
 
 afterEach(() => cleanup());
 ```
+
 - 运行：
+
 ```powershell
 npm run test
 ```
@@ -92,6 +104,7 @@ npm run test
 - 根级 `CLAUDE.md` 内容建议：
   - 技术栈、运行命令、代码规范（命名/提交前检查）、测试策略（工具与覆盖率阈值）、注意事项（敏感路径不可改）。
 - `.claude/settings.toml`（最小 3 钩子）示例：
+
 ```toml
 [[hooks]]
 event = "PreToolUse"
@@ -150,6 +163,7 @@ command = "node scripts/claude/notify.cjs"
 
 ## 5. 改动就近测试 & 自动格式化（PostToolUse）
 - 相关测试选择器：`scripts/claude/related-tests.cjs`
+
 ```js
 const { execSync } = require('node:child_process');
 const { existsSync } = require('node:fs');
@@ -174,7 +188,9 @@ function toCandidateTests(srcPath) {
   execSync(`npm test -- ${args}`, { stdio:'inherit', cwd });
 })();
 ```
+
 - 改动格式化：`scripts/claude/format-changed.cjs`
+
 ```js
 const { execSync } = require('node:child_process');
 const { existsSync } = require('node:fs');
@@ -194,7 +210,9 @@ const filterExists = (fs)=>fs.filter(f=>existsSync(path.resolve(cwd,f)));
   if (tsFiles.length>0) execSync(`npx eslint --fix ${tsFiles.map(f=>`"${f}"`).join(' ')}`, { stdio:'inherit', cwd });
 })();
 ```
+
 - 手动触发相关测试（PowerShell）：
+
 ```powershell
 $env:CLAUDE_FILE_PATHS='src\features\tasks\TaskForm.tsx'
 npm run test:related
@@ -211,16 +229,21 @@ npm run test:related
 ## 7. 质量闸门（Husky、Prettier、ESLint、覆盖率门禁）
 - Husky 初始化：`npx husky-init` 自动创建 `.husky/pre-commit`
 - 修改 `.husky/pre-commit`：
+
 ```sh
 npx lint-staged && npm test
 ```
+
 - Prettier（`.prettierrc.json`）与 lint-staged（`.lintstagedrc.json`）：
+
 ```json
 {"singleQuote": true, "semi": true, "trailingComma": "es5", "printWidth": 100}
 ```
+
 ```json
 {"*.{ts,tsx,js,jsx,json,md,css}":["prettier --write","eslint --fix"]}
 ```
+
 - 覆盖率门禁：已在 `vite.config.ts` 设置（lines/functions/statements ≥ 80%、branches ≥ 70%）
 
 ---
@@ -250,11 +273,13 @@ npx lint-staged && npm test
 
 ## 10. 多代理并发（git worktree 脚本）
 - 脚本：`scripts/worktree.ps1`
+
 ```powershell
 param([Parameter(Mandatory=$true)][string]$Name,[Parameter(Mandatory=$true)][string]$Base='main')
 git worktree add -b $Name ../zen-tasks-$Name $Base
 # 回收：git worktree remove ../zen-tasks-$Name
 ```
+
 - 用法：给每个 SubAgent 分配独立工作区（互不干扰），完成任务后回收。
 
 ---
@@ -262,19 +287,20 @@ git worktree add -b $Name ../zen-tasks-$Name $Base
 ## 11. PR 演示流（小功能 + 规范提交 + CI 检查）
 - 新增 `getBuildInfo()`（`src/utils/buildInfo.ts`/`.test.ts`）
 - 创建分支并提交：
+
 ```powershell
 git checkout -b feat/build-info
 git add .
 git commit -m "feat: add build info utility with tests"
 git push -u origin feat/build-info
 ```
+
 - 打开 PR：`https://github.com/DHKun/zen-tasks/pull/new/feat/build-info`
 - 合并后：Release 自动发版并更新 CHANGELOG，CI 上传覆盖率并更新 README 徽章
 
 ---
 
 ## 12. Windows PowerShell 踩坑与修复
-- `&&` 不可用：用分号分行，或 `if ($LASTEXITCODE -eq 0) { ... }`，或 `cmd /c "a && b"`
 - CRLF/LF 警告：使用 `.gitattributes` 与 `.editorconfig` 统一 LF
 - Node ESM 与脚本：项目 `"type":"module"` 时，工具脚本用 `.cjs`，避免 `require` 报错
 - Vitest 选项：不支持 `--watchAll`（Jest 专用）
