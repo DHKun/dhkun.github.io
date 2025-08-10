@@ -18,28 +18,6 @@ tags: [AI, 自动化]
 
 ---
 
-## 目录
-- 0. 目标与环境
-- 1. 新项目初始化（Vite + React + TS）
-- 2. 测试体系（Vitest + Testing Library）
-- 3. CLAUDE 记忆与 Hooks（最小可用）
-- 4. 按 TDD 实现小功能链（校验→表单→列表→集成→持久化）
-- 5. 改动就近测试 & 自动格式化（PostToolUse）
-- 6. Stop/Notification Hooks（失败阻断与提示/本地通知）
-- 7. 质量闸门（Husky、Prettier、ESLint、覆盖率门禁）
-- 8. CI/CD（测试构建、Codecov、徽章自动替换、Release）
-- 9. 安全与依赖治理（Dependabot、CodeQL、Gitleaks）
-- 10. 多代理并发（git worktree 脚本）
-- 11. PR 演示流（小功能 + 规范提交 + CI 检查）
-- 12. Windows PowerShell 踩坑与修复
-- 13. 与三篇文章的“理念→落地”映射表
-- 14. 常见问题（FAQ）
-- 15. 关键文件与脚本索引（含示例）
-- 16. 一键复刻指南（你的项目怎么落地）
-- 17. 结语（我学到的核心）
-
----
-
 ## 0. 目标与环境
 - 目标：把“上下文工程 + Hooks 自动化 + TDD + CI/CD + 安全与依赖治理 + 多代理并发协作”串成闭环。
 - 环境：
