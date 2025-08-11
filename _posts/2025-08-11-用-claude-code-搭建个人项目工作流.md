@@ -1,5 +1,5 @@
 ---
-title: /[折腾日记2] 用 Claude Code 搭建个人项目工作流
+title: 【折腾日记2】 用 Claude Code 搭建个人项目工作流
 date: 2025-08-11 18:44 +0800
 categories: [折腾日记]
 tags: [AI, 自动化]
