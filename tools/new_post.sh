@@ -19,7 +19,15 @@ if [[ $# -lt 1 ]]; then
   exit 1
 fi
 
-title="$1"; shift || true
+# 支持 -t/--title 或第一个位置参数作为标题
+title=""
+if [[ "${1-}" == "-t" || "${1-}" == "--title" ]]; then
+  title="${2:-}"
+  shift 2 || true
+else
+  title="${1:-}"
+  shift || true
+fi
 cats=""; tags=""; repo=""
 
 while [[ $# -gt 0 ]]; do
