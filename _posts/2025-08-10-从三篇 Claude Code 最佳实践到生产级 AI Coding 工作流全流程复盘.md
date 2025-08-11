@@ -1,9 +1,9 @@
 ---
-title: 从三篇 Claude Code 最佳实践到生产级 AI Coding 工作流全流程复盘
+title: [折腾日记1]从三篇 Claude Code 最佳实践到生产级 AI Coding 工作流全流程复盘
 author: DHKun
 date: 2025-08-10 20:49 +0800
 repo: https://github.com/DHKun/zen-tasks
-categories: [AI]
+categories: [折腾日记]
 tags: [AI, 自动化]
 ---
 
